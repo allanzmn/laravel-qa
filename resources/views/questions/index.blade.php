@@ -32,14 +32,20 @@
                             </div>
                             <div class="media-body">
                                 <div class="d-flex align-items-center">
+
                                     <h3 class="mt-0"><a href="{{ $question->url }}"> {{ $question->title }}</a> </h3>
                                     <div class="ml-auto">
+                                        @can('update-question', $question)
                                         <a href="{{ route('questions.edit', $question->id) }}", class="btn btn-sm btn-outline-info">Edit</a>
+                                        @endcan
+
+                                        @can('update-question', $question)
                                         <form class="form-delete" method="post" action="{{ route('questions.destroy', $question->id) }}">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')">Delete</button>
                                         </form> 
+                                        @endcan
                                     </div>
                                 </div>
                                 <p class="lead">
