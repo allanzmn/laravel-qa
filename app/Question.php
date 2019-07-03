@@ -47,6 +47,6 @@ class Question extends Model
 
     public function answers()
     {
-        return $this->hasMany(Answer::calss);
+        return $this->hasMany(Answer::class);
     }
 }
