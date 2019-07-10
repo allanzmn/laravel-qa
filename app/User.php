@@ -41,16 +41,21 @@ class User extends Authenticatable
         return $this->hasMany(Question::class);
     }
 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Question::class, 'favorites')->withTimeStamps();
+    }
+
     public function getUrlAttribute()
     {
         // return route('questions.show', $this->id);
         return '#';
     }    
-
-    public function answers()
-    {
-        return $this->hasMany(Answer::calss);
-    }
 
     public function getAvatarAttribute()
     {
